@@ -3,16 +3,15 @@ package com.titanic.springstudy;
 import com.titanic.springstudy.member.Grade;
 import com.titanic.springstudy.member.Member;
 import com.titanic.springstudy.member.MemberService;
-import com.titanic.springstudy.member.MemberServiceImpl;
 import com.titanic.springstudy.order.Order;
 import com.titanic.springstudy.order.OrderService;
-import com.titanic.springstudy.order.OrderServiceImpl;
 
 public class OrderApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         Long memberId = 1L;
         Member member = new Member(memberId, "memberA", Grade.VIP);

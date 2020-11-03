@@ -1,17 +1,26 @@
 package com.titanic.springstudy.order;
 
+import com.titanic.springstudy.AppConfig;
 import com.titanic.springstudy.member.Grade;
 import com.titanic.springstudy.member.Member;
 import com.titanic.springstudy.member.MemberService;
 import com.titanic.springstudy.member.MemberServiceImpl;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class OrderServiceTest {
 
-    MemberService memberService = new MemberServiceImpl();
-    OrderService orderService = new OrderServiceImpl();
+    MemberService memberService;
+    OrderService orderService;
+
+    @BeforeEach
+    public void setUp() {
+        AppConfig appConfig = new AppConfig();
+        memberService = appConfig.memberService();
+        orderService = appConfig.orderService();
+    }
 
     @Test
     void createOrder() {
