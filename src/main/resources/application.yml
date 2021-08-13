@@ -1,0 +1,25 @@
+management:
+  endpoint:
+    heapdump:
+      enabled: true
+    metrics:
+      enabled: true
+  metrics:
+    enable:
+      jvm: true
+    export:
+      statsd:
+        enabled: true
+        host: "localhost"
+        port: 8125
+        protocol: "udp"
+        flavor: "etsy"
+      jmx:
+        enabled: true
+      prometheus:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
